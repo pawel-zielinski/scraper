@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <body style="background-color: #68e387">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 m-5">
+          <center><h1>Link Collector</h1></center>
+        </div>
+      </div>
+
+
+          <form method="POST" action="/">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="site" id="site" placeholder="input your page URL">
+              </div>
+              <div class="col-md-1">
+                <button type="submit" class="btn btn-primary">Scrape</button>
+              </div>
+              <div class="col-md-1">
+                <a class="btn btn-warning" href="/delete">Clear Database</a>
+              </div>
+            </div>
+            </form>
+            <br>
+          </div>
+
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for link in data %}
+              <tr>
+                <td>{{link.id}}</td>
+                <td>{{link.name}}</td>
+                <td>{{link.address}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+  </body>
+</html>
